@@ -37,6 +37,9 @@ defineEmits(["open"]);
         <span v-for="t in project.tags" :key="t" class="tag">{{ t }}</span>
       </div>
       <div class="links">
+        <button v-if="hasDetail" class="btn small" @click="$emit('open')">
+          자세히 보기
+        </button>
         <a
           :href="project.github"
           target="_blank"
@@ -53,9 +56,6 @@ defineEmits(["open"]);
           >데모 보기 ↗</a
         >
       </div>
-      <button v-if="hasDetail" class="btn small" @click="$emit('open')">
-        자세히 보기
-      </button>
     </div>
   </article>
 </template>
