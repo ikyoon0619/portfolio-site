@@ -1,7 +1,7 @@
 // 최신순. 이력서(잡코리아)와 같은 날짜·회사명을 유지할 것
 export const career = [
   {
-    period: "2025.08 ~ 2026.09",
+    period: "2025.06 ~ 2026.09",
     company: "㈜대유에이온",
     role: "대리 · 백엔드 개발",
     project: "포스코 디지털 CRM 구축 (Salesforce)",
