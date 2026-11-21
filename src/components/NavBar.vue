@@ -31,17 +31,30 @@ const menus = [
   align-items: center;
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid #eee;
+  backdrop-filter: blur(6px); /* 뒤 내용이 살짝 흐리게 비침 */
+  border-bottom: 1px solid var(--border);
 }
 .logo {
   font-weight: 700;
-  color: #111;
-  text-decoration: none;
+  color: var(--text);
 }
 nav a {
-  margin-left: 14px;
+  margin-left: 16px;
   font-size: 14px;
-  color: #333;
+  color: var(--text);
+}
+nav a:hover {
+  color: var(--accent);
   text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 0 12px;
+  }
+  nav a {
+    margin-left: 10px;
+    font-size: 13px;
+  }
 }
 </style>
