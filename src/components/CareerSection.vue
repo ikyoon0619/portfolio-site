@@ -7,7 +7,7 @@ import { career } from "../data/career";
     <h2>경력</h2>
     <ol class="timeline">
       <li v-for="c in career" :key="c.period" class="item">
-        <p class="period">{{ c.period }}</p>
+        <p class="period">{{ c.period }} · {{ c.role }}</p>
         <h3>{{ c.company }}</h3>
         <p class="project">{{ c.project }}</p>
         <ul class="tasks">
