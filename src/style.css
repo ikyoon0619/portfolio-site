@@ -1,11 +1,20 @@
 :root {
-  /* 색 변수: 여기만 바꾸면 사이트 전체 색이 바뀜 */
-  --text: #1f2937;
-  --text-sub: #6b7280;
-  --bg: #ffffff;
-  --bg-soft: #f3f4f6;
-  --border: #e5e7eb;
-  --accent: #2563eb;
+  /* ===== 색 변수: 여기만 바꾸면 사이트 전체 분위기가 바뀜 ===== */
+  --text: #0f172a; /* 본문 글자 (거의 검정에 가까운 남색) */
+  --text-sub: #64748b; /* 보조 글자 (회색) */
+  --bg: #ffffff; /* 페이지 배경 */
+  --bg-soft: #f8fafc; /* 연한 회색 배경 (태그, 기술 박스) */
+  --surface: #ffffff; /* 카드 배경 */
+  --border: #e2e8f0; /* 테두리 선 */
+  --accent: #4f46e5; /* 포인트색 (인디고) */
+  --accent-soft: #eef2ff; /* 포인트색의 아주 연한 버전 */
+
+  /* ===== 모양 변수 ===== */
+  --radius: 16px; /* 카드 모서리 둥글기 */
+  /* 그림자 2겹: 가까운 진한 그림자 + 멀리 퍼지는 옅은 그림자 = 자연스러움 */
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-hover:
+    0 2px 4px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.1);
 
   font-family:
     "Pretendard",
@@ -13,44 +22,91 @@
     -apple-system,
     "Apple SD Gothic Neo",
     sans-serif;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--text);
   background: var(--bg);
   word-break: keep-all; /* 한글 단어 중간에서 줄바꿈하지 않기 */
+  -webkit-font-smoothing: antialiased; /* 맥에서 글자를 더 얇고 선명하게 */
 }
 * {
   box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
+  /* 메뉴 클릭으로 이동할 때, 고정된 상단 메뉴(60px)에 제목이 가려지지 않게 */
+  scroll-padding-top: 64px;
 }
 body {
   margin: 0;
+  background: var(--bg);
 }
 a {
   color: var(--accent);
   text-decoration: none;
 }
-a:hover {
-  text-decoration: underline;
-}
 
+/* ===== 섹션 공통 ===== */
 .section {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 88px 16px 40px;
+  padding: 112px 24px 24px;
+}
+/* 섹션 제목 위의 작은 영문 라벨 (예: PROJECTS) */
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em; /* 글자 사이를 넓게 */
+  text-transform: uppercase; /* 자동으로 대문자 */
+  color: var(--accent);
 }
 .section h2 {
-  font-size: 26px;
-  margin: 0 0 20px;
+  font-size: 32px;
+  letter-spacing: -0.02em; /* 큰 제목은 글자 사이를 살짝 좁히면 단단해 보임 */
+  margin: 0 0 32px;
+}
+
+/* ===== 버튼 공통 ===== */
+/* 사용법: <a class="btn">기본</a>, <a class="btn primary">강조</a>, <a class="btn small">작게</a> */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--surface);
+  /* 아래 세 값이 바뀔 때 0.15초 동안 부드럽게 */
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s,
+    background 0.15s;
+}
+.btn:hover {
+  transform: translateY(-1px); /* 마우스 올리면 1px 위로 */
+  box-shadow: var(--shadow);
+}
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn.small {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 8px;
 }
 
 /* 폰 화면 (폭 600px 이하) */
 @media (max-width: 600px) {
   .section {
-    padding: 72px 16px 32px;
+    padding: 80px 16px 16px;
   }
   .section h2 {
-    font-size: 22px;
+    font-size: 26px;
+    margin-bottom: 24px;
   }
 }
