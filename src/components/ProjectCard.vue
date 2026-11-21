@@ -8,18 +8,19 @@ defineProps({
 
 <template>
   <article class="card" :class="{ featured }">
+    <!-- 배지 줄: 둘 다 없으면 :empty 규칙으로 줄 자체가 숨겨짐 -->
     <header class="head">
-      <h3>{{ project.title }}</h3>
+      <span v-if="featured" class="label">대표 프로젝트</span>
       <span v-if="project.status" class="status">{{ project.status }}</span>
     </header>
-
+    <h3>{{ project.title }}</h3>
     <p class="summary">{{ project.summary }}</p>
 
-    <!-- 동작 흐름: 항목 사이에 화살표 -->
+    <!-- 동작 흐름: 번호 + 단계 이름 -->
     <ol v-if="project.flow.length" class="flow">
       <li v-for="(step, i) in project.flow" :key="step">
-        <span class="step">{{ step }}</span>
-        <span v-if="i < project.flow.length - 1" class="arrow">→</span>
+        <span class="num">{{ i + 1 }}</span
+        >{{ step }}
       </li>
     </ol>
 
@@ -27,84 +28,165 @@ defineProps({
       <li v-for="h in project.highlights" :key="h">{{ h }}</li>
     </ul>
 
-    <div class="tags">
-      <span v-for="t in project.tags" :key="t" class="tag">{{ t }}</span>
-    </div>
-
-    <div class="links">
-      <a :href="project.github" target="_blank" rel="noopener">GitHub</a>
-      <a v-if="project.demo" :href="project.demo" target="_blank" rel="noopener"
-        >데모</a
-      >
+    <!-- 카드 맨 아래: 태그(왼쪽) + 버튼(오른쪽) -->
+    <div class="foot">
+      <div class="tags">
+        <span v-for="t in project.tags" :key="t" class="tag">{{ t }}</span>
+      </div>
+      <div class="links">
+        <a
+          :href="project.github"
+          target="_blank"
+          rel="noopener"
+          class="btn small"
+          >GitHub</a
+        >
+        <a
+          v-if="project.demo"
+          :href="project.demo"
+          target="_blank"
+          rel="noopener"
+          class="btn small primary"
+          >데모 보기 ↗</a
+        >
+      </div>
     </div>
   </article>
 </template>
 
 <style scoped>
 .card {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
+.card:hover {
+  transform: translateY(-3px); /* 3px 떠오름 */
+  box-shadow: var(--shadow-hover); /* 그림자도 더 크게 */
+}
+
+/* 대표 카드 */
 .featured {
-  grid-column: 1 / -1; /* 대표 카드는 줄 전체를 차지 */
-  border-color: #2563eb;
+  grid-column: 1 / -1; /* 줄 전체를 차지 */
+  /* 위는 연보라, 55% 지점부터 흰색으로 */
+  background: linear-gradient(180deg, var(--accent-soft), var(--surface) 55%);
+  /* 테두리: 포인트색 30% + 기본 테두리색 70%를 섞은 색 */
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
 }
+
 .head {
   display: flex;
-  align-items: center;
   gap: 8px;
 }
-h3 {
-  margin: 0;
-  font-size: 20px;
+.head:empty {
+  display: none; /* 배지가 하나도 없으면 빈 줄을 숨김 */
 }
+.label,
 .status {
   font-size: 12px;
-  padding: 2px 8px;
+  font-weight: 700;
+  padding: 3px 10px;
   border-radius: 999px;
-  background: #eff6ff;
-  color: #2563eb;
+}
+.label {
+  background: var(--accent);
+  color: #fff;
+}
+.status {
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+h3 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.featured h3 {
+  font-size: 26px;
 }
 .summary {
   margin: 0;
-  color: #444;
+  color: var(--text-sub);
 }
 
+/* 동작 흐름 */
 .flow {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 8px;
 }
 .flow li {
   display: flex;
   align-items: center;
-  gap: 4px;
-}
-.step {
+  gap: 8px;
   font-size: 13px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  background: #f3f4f6;
+  font-weight: 500;
+  padding: 6px 12px 6px 6px; /* 왼쪽은 번호 원이 있어서 좁게 */
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
-.arrow {
-  color: #9ca3af;
+.num {
+  display: grid;
+  place-items: center; /* 숫자를 원 정가운데에 */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
+/* 강조점 */
 .highlights {
   margin: 0;
-  padding-left: 18px;
+  padding: 0;
+  list-style: none; /* 기본 점(•) 없애고 */
+  display: grid;
+  gap: 6px;
+}
+.featured .highlights {
+  grid-template-columns: 1fr 1fr; /* 대표 카드는 2열 */
+  column-gap: 24px;
 }
 .highlights li {
-  margin: 2px 0;
+  position: relative;
+  padding-left: 20px; /* ✓ 들어갈 자리 */
+  font-size: 15px;
+}
+.highlights li::before {
+  content: "✓"; /* 직접 그린 체크 표시 */
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
 }
 
+/* 카드 아래 */
+.foot {
+  margin-top: auto; /* 카드 맨 아래로 밀기 (옆 카드와 높이 맞춤) */
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -112,15 +194,23 @@ h3 {
 }
 .tag {
   font-size: 12px;
-  padding: 2px 8px;
-  border: 1px solid #e5e7eb;
+  font-weight: 500;
+  padding: 3px 9px;
   border-radius: 6px;
-  color: #555;
+  background: var(--bg-soft);
+  color: var(--text-sub);
 }
-
 .links {
   display: flex;
-  gap: 12px;
-  margin-top: auto;
-} /* margin-top:auto = 카드 맨 아래로 */
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+  }
+  .featured .highlights {
+    grid-template-columns: 1fr; /* 폰에서는 1열 */
+  }
+}
 </style>
