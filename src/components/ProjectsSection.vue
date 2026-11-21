@@ -5,6 +5,8 @@ import ProjectCard from "./ProjectCard.vue";
 
 <template>
   <section id="projects" class="section">
+    <!-- 1단계에서 만든 .eyebrow: 제목 위 작은 영문 라벨 -->
+    <p class="eyebrow">Projects</p>
     <h2>프로젝트</h2>
     <div class="grid">
       <!-- 첫 번째(index 0) 프로젝트만 대표 카드 -->
@@ -23,6 +25,6 @@ import ProjectCard from "./ProjectCard.vue";
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 </style>
