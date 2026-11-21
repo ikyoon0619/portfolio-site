@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"   # 빌드 명령
+  publish = "dist"            # 빌드 결과 폴더
+
+[build.environment]
+  NODE_VERSION = "22"         # Vite 최신 버전이 Node 20.19 이상을 요구함

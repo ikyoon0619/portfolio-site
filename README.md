@@ -1,5 +1,30 @@
-# Vue 3 + Vite
+# 윤인규 포트폴리오
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Java/Spring 백엔드와 LLM 서비스 개발자 윤인규의 포트폴리오 사이트입니다.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+**사이트**: https://(Netlify 주소를 여기에)
+
+## 기술 스택
+
+- Vue 3 (Composition API, `<script setup>`)
+- Vite
+- Netlify (main 브랜치 푸시 시 자동 배포)
+
+## 구조
+
+화면 코드와 내용 데이터를 분리했습니다. 지원하는 직무에 따라 `src/data/projects.js`의 순서만 바꾸면 대표 프로젝트가 바뀝니다.
+
+```
+src/
+├── components/   # 섹션별 화면 (NavBar, Hero, Projects, Career, Skills, Contact)
+├── data/         # 화면에 보이는 내용 (profile, projects, career, skills)
+├── App.vue
+└── style.css     # 공통 스타일, 색 변수
+```
+
+## 로컬 실행
+
+```bash
+npm install
+npm run dev
+```
