@@ -1,7 +1,19 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from "./components/NavBar.vue";
+import HeroSection from "./components/HeroSection.vue";
+import ProjectsSection from "./components/ProjectsSection.vue";
+import CareerSection from "./components/CareerSection.vue";
+import SkillsSection from "./components/SkillsSection.vue";
+import ContactSection from "./components/ContactSection.vue";
 </script>
 
 <template>
-  <HelloWorld />
+  <NavBar />
+  <main>
+    <HeroSection />
+    <ProjectsSection />
+    <CareerSection />
+    <SkillsSection />
+    <ContactSection />
+  </main>
 </template>
