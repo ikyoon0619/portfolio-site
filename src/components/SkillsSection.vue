@@ -4,8 +4,10 @@ import { skills, certifications } from "../data/skills";
 
 <template>
   <section id="skills" class="section">
+    <p class="eyebrow">Skills</p>
     <h2>기술</h2>
     <div class="groups">
+      <!-- 기술 그룹 5개 -->
       <div v-for="s in skills" :key="s.group" class="group">
         <h3>{{ s.group }}</h3>
         <div class="tags">
@@ -14,28 +16,36 @@ import { skills, certifications } from "../data/skills";
           }}</span>
         </div>
       </div>
+      <!-- 자격증도 같은 박스 모양으로 -->
+      <div class="group">
+        <h3>자격증</h3>
+        <ul class="certs">
+          <li v-for="c in certifications" :key="c.name">
+            <span>{{ c.name }}</span
+            ><span class="date">{{ c.date }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <h3 class="cert-title">자격증</h3>
-    <ul class="certs">
-      <li v-for="c in certifications" :key="c.name">
-        {{ c.name }} <span class="date">{{ c.date }}</span>
-      </li>
-    </ul>
   </section>
 </template>
 
 <style scoped>
+/* 칸 최소 300px, 들어가는 만큼 자동으로 칸 수 결정 (넓은 화면 3칸, 폰 1칸) */
 .groups {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
 }
-.group h3,
-.cert-title {
-  margin: 0 0 8px;
+.group {
+  padding: 22px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.group h3 {
+  margin: 0 0 12px;
   font-size: 15px;
-  color: #374151;
 }
 .tags {
   display: flex;
@@ -44,20 +54,26 @@ import { skills, certifications } from "../data/skills";
 }
 .tag {
   font-size: 13px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #f3f4f6;
-}
-.cert-title {
-  margin-top: 28px;
+  font-weight: 500;
+  padding: 5px 11px;
+  border-radius: 8px;
+  background: var(--surface); /* 회색 박스 위의 흰 태그 */
+  border: 1px solid var(--border);
 }
 .certs {
+  list-style: none;
   margin: 0;
-  padding-left: 18px;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+.certs li {
+  display: flex;
+  justify-content: space-between; /* 이름은 왼쪽, 날짜는 오른쪽 끝 */
 }
 .date {
-  color: #6b7280;
-  font-size: 13px;
-  margin-left: 4px;
+  color: var(--text-sub);
+  font-variant-numeric: tabular-nums;
 }
 </style>
