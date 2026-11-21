@@ -3,7 +3,10 @@
 defineProps({
   project: { type: Object, required: true },
   featured: { type: Boolean, default: false }, // true면 대표 카드 (가로로 넓게)
+  hasDetail: { type: Boolean, default: false }, // 상세 내용이 있으면 "자세히 보기" 버튼 표시
 });
+// 버튼을 누르면 부모에게 "열어 주세요"라고 알림
+defineEmits(["open"]);
 </script>
 
 <template>
@@ -34,6 +37,9 @@ defineProps({
         <span v-for="t in project.tags" :key="t" class="tag">{{ t }}</span>
       </div>
       <div class="links">
+        <button v-if="hasDetail" class="btn small" @click="$emit('open')">
+          자세히 보기
+        </button>
         <a
           :href="project.github"
           target="_blank"
