@@ -22,7 +22,7 @@ import ProjectCard from "./ProjectCard.vue";
 /* 폭이 넓으면 2열, 좁으면(폰) 1열로 자동 배치 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 16px;
 }
 </style>
