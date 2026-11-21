@@ -2,7 +2,7 @@
 
 Java/Spring 백엔드와 LLM 서비스 개발자 윤인규의 포트폴리오 사이트입니다.
 
-**사이트**: https://(Netlify 주소를 여기에)
+**사이트**: https://portfolio-site-ikyoon.netlify.app
 
 ## 기술 스택
 
