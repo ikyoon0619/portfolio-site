@@ -18,6 +18,7 @@ export const projects = [
       "벡터 + BM25 하이브리드 검색으로 MRR 0.928 → 0.957",
       "답변마다 출처 페이지 표시, 카탈로그에 없는 질문은 거절",
       "FastAPI /chat API와 pytest 테스트",
+      "Render + Neon 무료 배포, 하루 질문 한도로 API 비용 보호",
     ],
     tags: [
       "Python",
@@ -28,7 +29,7 @@ export const projects = [
       "Docker",
     ],
     github: "https://github.com/ikyoon0619/ai-cs-agent",
-    demo: "",
+    demo: "https://ai-cs-agent.onrender.com",
   },
   {
     id: "pharmacy-backend",
