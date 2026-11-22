@@ -1,7 +1,7 @@
 export const skills = [
   {
     group: "AI / LLM",
-    items: ["Python", "LangChain", "RAG", "Claude API", "pgvector"],
+    items: ["Python", "LangChain", "LangGraph", "RAG", "Claude API", "pgvector"],
   },
   {
     group: "백엔드",
