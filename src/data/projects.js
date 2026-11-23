@@ -1,5 +1,4 @@
 // 배열 순서 = 화면에 보이는 순서. 첫 번째 프로젝트는 넓은 "대표 카드"로 보임
-// 자바 직무에 지원할 땐 pharmacy-backend를 맨 앞으로 옮기면 됨
 export const projects = [
   {
     id: "ai-cs-agent",
@@ -35,19 +34,24 @@ export const projects = [
   },
   {
     id: "pharmacy-backend",
-    title: "약국 추천 서비스",
+    title: "AI 약국 찾기",
     status: "",
     summary:
-      "주소를 입력하면 가까운 약국 3곳과 카카오맵 길안내를 알려 주는 Spring Boot 서비스",
-    flow: ["주소 입력", "좌표 변환", "약국 검색 (거리순)", "약국 3곳 + 길안내"],
-    highlights: [
-      "Spring Boot 3.3으로 다시 구현, 깨진 폴더 구조 정리",
-      "Spring Retry: 5xx·네트워크 오류만 재시도",
-      "Base62 짧은 길안내 URL (/dir/{code})",
-      "테스트 21개 (JUnit 5, Mockito)",
-      "Docker로 Render 무료 배포",
+      "\"강남역 근처 일요일 밤 10시에 여는 약국\"처럼 문장으로 물으면 Claude가 도구를 골라 실제 약국 데이터로 답하는 Spring Boot 서비스",
+    flow: [
+      "문장 질문",
+      "Claude가 도구 선택 (Tool Use)",
+      "카카오 장소 검색 · 공공데이터 영업시간",
+      "약국 카드 + 영업 여부 + 길안내",
     ],
-    tags: ["Java 17", "Spring Boot 3", "JPA", "Docker"],
+    highlights: [
+      "Anthropic Java SDK로 Tool Use 루프 직접 구현 (도구 3개, 최대 4턴)",
+      "약국 목록은 도구 결과로만 그려서 AI가 약국을 지어낼 수 없음",
+      "공공데이터 약국 25,432곳 영업시간을 매일 수집, 자정 넘는 영업까지 계산",
+      "하루·IP별 AI 사용 한도로 공개 데모 비용 보호",
+      "테스트 64개 (JUnit 5, Mockito, 외부 API 없이 실행), Docker로 Render 배포",
+    ],
+    tags: ["Java 17", "Spring Boot 3", "Claude API", "Tool Use", "JPA", "Docker"],
     github: "https://github.com/ikyoon0619/pharmacy-backend",
     demo: "https://pharmacy-ikyoon.onrender.com",
   },
