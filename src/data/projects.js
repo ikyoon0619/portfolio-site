@@ -58,19 +58,25 @@ export const projects = [
   },
   {
     id: "vue3-movie-app",
-    title: "영화 검색 앱",
+    title: "AI 영화 추천 · 검색 앱",
     status: "",
     summary:
-      "OMDb API로 영화를 검색하는 Vue 3 앱. API 키를 서버리스 함수 뒤로 숨기도록 개선",
-    flow: ["검색어 입력", "Netlify Function", "OMDb API", "결과·상세"],
-    highlights: [
-      "API 키를 Netlify Function으로 옮겨 브라우저 코드에서 제거",
-      "허용한 파라미터만 넘기는 서버리스 프록시",
-      "검색 실패 안내가 뜨지 않던 버그 수정",
-      "여러 페이지 결과를 Promise.all로 동시에 요청",
+      "\"비 오는 날 혼자 보기 좋은 영화\"처럼 기분을 적으면 Claude가 영화를 고르고, OMDb에서 실제로 있는 영화인지 확인한 뒤 보여 주는 Vue 3 앱",
+    flow: [
+      "기분·상황 입력",
+      "Claude가 JSON으로 후보 8편",
+      "OMDb로 제목·연도 검증",
+      "확인된 영화만 표시",
     ],
-    tags: ["Vue 3", "Vuex", "Netlify Functions", "Node.js"],
+    highlights: [
+      "구조화된 출력(zod 스키마)으로 Claude 답을 항상 {제목, 연도, 이유} JSON으로 받음",
+      "후보마다 OMDb에서 제목·연도를 대조해 지어낸 영화는 걸러내고, 걸러낸 후보도 따로 표시",
+      "서버리스라 메모리 대신 Netlify Blobs에 하루 사용량 저장 (전체 100번, 1인 5번, IP는 해시로만)",
+      "API 키는 Netlify Function 뒤에만 두고 브라우저 코드에서 제거",
+      "Claude·OMDb를 가짜로 바꿔 키 없이 도는 Vitest 테스트 22개",
+    ],
+    tags: ["Vue 3", "Claude API", "Structured Output", "Netlify Functions", "Vitest"],
     github: "https://github.com/ikyoon0619/vue3-movie-app",
-    demo: "https://superb-croissant-161b98.netlify.app/",
+    demo: "https://superb-croissant-161b98.netlify.app/#/recommend",
   },
 ];
