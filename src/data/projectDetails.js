@@ -76,8 +76,8 @@ export const projectDetails = {
         body: "최대 4턴으로 제한하고, 도구 오류는 is_error로 Claude에게 알려 사용자에게 설명하게 했습니다. 공개 데모라 하루 전체 50번, IP당 5번 한도를 걸었습니다.",
       },
       {
-        title: "LLM 응답을 기다리는 UX",
-        body: "답이 몇 초 걸려서 버튼을 잠그고 \"찾는 중\"을 보여 줘 중복 요청(=비용)을 막았습니다. 예시 질문 칩, 모바일 카드, 전화(tel:) 버튼을 Thymeleaf 조각과 작은 JS만으로 만들었습니다.",
+        title: "기다리는 시간을 SSE로 보이게",
+        body: "실제로 재 보니 약 9초 중 8초가 도구 단계였습니다. 그래서 답변 글자 스트리밍과 함께 \"'잠실역' 위치를 찾고 있어요\" 같은 진행 단계를 SSE로 바로 보냅니다. 루프는 전용 스레드풀에서 돌고, Claude 스트리밍 조각은 MessageAccumulator로 다시 모아 기존 Tool Use 루프를 그대로 썼습니다. 사용자가 떠나 전송이 실패하면 루프를 멈춰 Claude 호출을 더 쓰지 않습니다.",
       },
       {
         title: "외부 API 없이 도는 테스트",
@@ -87,7 +87,7 @@ export const projectDetails = {
     results: [
       { value: "25,432곳", label: "영업시간을 매일 수집하는 약국" },
       { value: "3개", label: "Claude가 골라 쓰는 도구" },
-      { value: "64개", label: "테스트 (JUnit 5, Mockito)" },
+      { value: "74개", label: "테스트 (JUnit 5, Mockito)" },
       { value: "50 / 5회", label: "하루 AI 한도 (전체 / IP당)" },
     ],
     next: [
