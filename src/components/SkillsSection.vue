@@ -4,7 +4,6 @@ import { skillMatrix, certifications } from "../data/skills";
 
 <template>
   <section id="skills" class="section">
-    <p class="eyebrow">Skills</p>
     <h2>기술과 경험</h2>
     <p class="lead">
       기술마다 실무에서 썼는지, 개인 프로젝트에서 썼는지 나눠 적었습니다.
@@ -23,7 +22,7 @@ import { skillMatrix, certifications } from "../data/skills";
         <tbody>
           <tr v-for="m in skillMatrix" :key="m.skill">
             <th scope="row">{{ m.skill }}</th>
-            <!-- 실무는 초록, 프로젝트는 보라 배지 -->
+            <!-- 실무는 진하게, 프로젝트는 보통 글씨 (색 배지 대신) -->
             <td>
               <span class="kind" :class="{ work: m.kind === '실무' }">{{
                 m.kind
@@ -89,17 +88,12 @@ tbody th {
   font-weight: 700;
 }
 .kind {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  background: var(--accent-soft);
-  color: #3730a3;
+  font-size: 14px;
+  color: var(--text-sub);
 }
 .kind.work {
-  background: #dcfce7;
-  color: #14532d;
+  font-weight: 700;
+  color: var(--accent);
 }
 .where {
   color: #334155;

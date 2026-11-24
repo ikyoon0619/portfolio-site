@@ -19,10 +19,4 @@ export const profile = {
     { label: "학력", value: "학점은행제 컴퓨터공학 학사" },
     { label: "근무", value: "서울·경기, 정규직/계약직" },
   ],
-  // 첫 화면 아래 숫자 카드 (value: 큰 글씨, label: 설명)
-  stats: [
-    { value: "5년 3개월", label: "기업 시스템 개발 경력" },
-    { value: "포스코 · LG화학", label: "대기업 영업 CRM 실무" },
-    { value: "4개", label: "직접 배포한 프로젝트" },
-  ],
 };
