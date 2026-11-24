@@ -9,8 +9,26 @@ defineEmits(["open"]);
 </script>
 
 <template>
-  <!-- 한 줄짜리 목록형 카드: 왼쪽 설명, 오른쪽 기술과 버튼 -->
+  <!-- 박스 대신 줄로 나눈 목록: 왼쪽 실제 화면 캡처, 오른쪽 설명 -->
   <article class="row">
+    <!-- 캡처를 누르면 데모가 새 탭으로 열림 (데모가 없으면 그림만) -->
+    <component
+      :is="project.demo ? 'a' : 'div'"
+      v-if="project.thumb"
+      class="shot"
+      :href="project.demo || undefined"
+      :target="project.demo ? '_blank' : undefined"
+      :rel="project.demo ? 'noopener' : undefined"
+    >
+      <img
+        :src="project.thumb"
+        :alt="project.thumbAlt || `${project.title} 화면`"
+        width="720"
+        height="450"
+        loading="lazy"
+      />
+    </component>
+
     <div class="main">
       <h3>{{ project.title }}</h3>
       <p class="summary">{{ project.summary }}</p>
@@ -19,32 +37,25 @@ defineEmits(["open"]);
       </p>
       <!-- 데모에 로그인이 필요하면 체험 계정 안내 (없으면 안 보임) -->
       <p v-if="project.demoNote" class="demo-note">{{ project.demoNote }}</p>
-    </div>
-
-    <div class="side">
       <p class="tags">{{ project.tags.join(" · ") }}</p>
       <div class="links">
-        <button
-          v-if="hasDetail"
-          class="btn small primary"
-          @click="$emit('open')"
-        >
-          자세히 보기
+        <button v-if="hasDetail" class="text-link" @click="$emit('open')">
+          자세히 보기 →
         </button>
         <a
           v-if="project.demo"
           :href="project.demo"
           target="_blank"
           rel="noopener"
-          class="btn small"
+          class="text-link"
           >데모 ↗</a
         >
         <a
           :href="project.github"
           target="_blank"
           rel="noopener"
-          class="btn small"
-          >GitHub</a
+          class="text-link"
+          >GitHub ↗</a
         >
       </div>
     </div>
@@ -54,22 +65,31 @@ defineEmits(["open"]);
 <style scoped>
 .row {
   display: grid;
-  grid-template-columns: 1fr 260px; /* 설명(남은 폭) + 기술·버튼(260px) */
-  gap: 24px;
-  align-items: center;
-  padding: 24px 28px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.2s;
+  grid-template-columns: 340px 1fr; /* 캡처(340px) + 설명(남은 폭) */
+  gap: 32px;
+  align-items: start;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border); /* 항목 사이 구분선 */
 }
-.row:hover {
-  box-shadow: var(--shadow-hover);
+/* 캡처: 얇은 테두리만, 그림자·둥근 모서리 최소 */
+.shot {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+a.shot:hover {
+  border-color: var(--text-sub);
 }
 h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: 21px;
   letter-spacing: -0.02em;
 }
 .summary {
@@ -81,39 +101,31 @@ h3 {
   font-size: 15px;
 }
 .result strong {
-  color: var(--accent);
-  margin-right: 4px;
+  margin-right: 6px;
+  font-weight: 700;
 }
 .demo-note {
   margin: 10px 0 0;
-  padding: 6px 10px;
   font-size: 0.875rem;
   color: var(--text-sub);
-  border: 1px dashed var(--border);
-  border-radius: 8px;
-}
-.side {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 .tags {
-  margin: 0;
+  margin: 12px 0 14px;
   font-size: 13px;
   color: var(--text-sub);
 }
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 8px 20px;
 }
 
-/* 폰: 기술·버튼을 설명 아래로 */
+/* 폰·좁은 화면: 캡처를 위, 설명을 아래로 */
 @media (max-width: 760px) {
   .row {
     grid-template-columns: 1fr;
     gap: 16px;
-    padding: 20px;
+    padding: 24px 0;
   }
 }
 </style>

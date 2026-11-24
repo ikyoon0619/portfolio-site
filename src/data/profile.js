@@ -2,9 +2,9 @@
 export const profile = {
   name: "윤인규",
   title: "백엔드 · LLM 서비스 개발자",
-  role: "Java/Spring 백엔드 개발자", // 요약 카드의 사진 옆 한 줄
+  role: "신입 Java/Spring 백엔드 개발자", // 요약 카드의 사진 옆 한 줄
   summary:
-    "총 경력 5년 3개월. Salesforce CRM 개발과 인프라 경험을 바탕으로 Java/Spring과 Python으로 서비스를 만들고, LLM 기능은 평가셋으로 측정하며 개선합니다.",
+    "총 경력 5년 3개월. Salesforce CRM 개발과 인프라 경험을 바탕으로 Java/Spring과 Python으로 서비스를 만들고, LLM 기능은 평가셋으로 측정하며 개선합니다. 지금은 Java/Spring 백엔드 개발자로 신입부터 새로 시작하려고 합니다.",
   github: "https://github.com/ikyoon0619",
   photo: "/profile.jpg", // public 폴더의 사진. 비워두면 사진 없이 보임
   email: "ikyoon0619@gmail.com",
@@ -12,17 +12,11 @@ export const profile = {
   // 요약 카드 "한눈에 보기" (인사 담당자가 처음 찾는 정보)
   facts: [
     { label: "총 경력", value: "5년 3개월 (회사 4곳)" },
-    { label: "희망 직무", value: "Java/Spring 백엔드" },
+    { label: "희망 직무", value: "Java/Spring 백엔드 (신입)" },
     { label: "주력 기술", value: "Java, Spring Boot, JPA, MySQL, Docker, AWS" },
     { label: "실무 도메인", value: "제조 대기업 영업 CRM (포스코, LG화학)" },
     { label: "자격증", value: "정보처리산업기사, 네트워크관리사 2급" },
     { label: "학력", value: "학점은행제 컴퓨터공학 학사" },
     { label: "근무", value: "서울·경기, 정규직/계약직" },
-  ],
-  // 첫 화면 아래 숫자 카드 (value: 큰 글씨, label: 설명)
-  stats: [
-    { value: "5년 3개월", label: "기업 시스템 개발 경력" },
-    { value: "포스코 · LG화학", label: "대기업 영업 CRM 실무" },
-    { value: "4개", label: "직접 배포한 프로젝트" },
   ],
 };

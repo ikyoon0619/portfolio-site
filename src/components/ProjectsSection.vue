@@ -15,8 +15,6 @@ const selectedDetail = computed(() =>
 
 <template>
   <section id="projects" class="section">
-    <!-- 1단계에서 만든 .eyebrow: 제목 위 작은 영문 라벨 -->
-    <p class="eyebrow">Projects</p>
     <h2>프로젝트</h2>
     <div class="grid">
       <ProjectCard
@@ -40,7 +38,6 @@ const selectedDetail = computed(() =>
 <style scoped>
 /* 프로젝트를 위에서 아래로 한 줄씩 */
 .grid {
-  display: grid;
-  gap: 16px;
+  border-top: 1px solid var(--border); /* 박스 대신 줄로 구분 */
 }
 </style>

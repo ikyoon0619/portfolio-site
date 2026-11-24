@@ -2,6 +2,10 @@
 export const projects = [
   {
     id: "purchase-approval",
+    // 목록 왼쪽 화면 캡처 (라이브 데모에서 직접 찍음, 2026-11-24)
+    thumb: "/projects/thumb-purchase-approval.jpg",
+    thumbAlt:
+      "팀장 계정으로 연 구매요청서 상세 화면. 품목 표와 결재선(팀장 결재 차례, 본부장 대기)이 보임",
     // 목록에 한 줄로 보이는 결과
     result: "동시 결재·재고 유실 문제를 락으로 해결, AWS EC2에 운영 배포",
     title: "구매요청 · 전자결재 시스템",
@@ -38,6 +42,10 @@ export const projects = [
   },
   {
     id: "ai-cs-agent",
+    // 목록 왼쪽 화면 캡처 (라이브 데모에서 직접 찍음, 2026-11-24)
+    thumb: "/projects/thumb-ai-cs-agent.jpg",
+    thumbAlt:
+      '"하이브리드 재고 있어?" 질문에 에이전트가 재고 조회 도구를 써서 트림·색상별 재고를 답한 화면',
     // 목록에 한 줄로 보이는 결과
     result: "하이브리드 검색으로 검색 정확도(MRR) 0.928에서 0.957로",
     title: "AI 고객상담 에이전트",
@@ -72,6 +80,10 @@ export const projects = [
   },
   {
     id: "pharmacy-backend",
+    // 목록 왼쪽 화면 캡처 (라이브 데모에서 직접 찍음, 2026-11-24)
+    thumb: "/projects/thumb-pharmacy-backend.jpg",
+    thumbAlt:
+      '"잠실역 근처 일요일 밤 10시에 여는 약국" 질문에 AI 안내 문장과 가까운 약국 카드가 나온 화면',
     // 목록에 한 줄로 보이는 결과
     result: "전국 약국 25,432곳 영업시간을 매일 갱신해 지금 문 연 약국을 찾음",
     title: "AI 약국 찾기",
@@ -106,6 +118,10 @@ export const projects = [
   },
   {
     id: "vue3-movie-app",
+    // 목록 왼쪽 화면 캡처 (라이브 데모에서 직접 찍음, 2026-11-24)
+    thumb: "/projects/thumb-vue3-movie-app.jpg",
+    thumbAlt:
+      '"비 오는 날 혼자 보기 좋은 잔잔한 영화"로 추천받은 결과. OMDb에서 확인된 영화 6편이 포스터와 함께 보임',
     // 목록에 한 줄로 보이는 결과
     result: "실제로 있는 영화만 보여 주고, API 키는 서버 함수 뒤로 숨김",
     title: "AI 영화 추천 · 검색 앱",

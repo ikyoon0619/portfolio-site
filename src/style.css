@@ -1,20 +1,20 @@
 :root {
   /* ===== 색 변수: 여기만 바꾸면 사이트 전체 분위기가 바뀜 ===== */
-  --text: #0f172a; /* 본문 글자 (거의 검정에 가까운 남색) */
-  --text-sub: #64748b; /* 보조 글자 (회색) */
+  /* 흑백 위주: 색 대신 굵기·크기·여백으로 위계를 줌 (Tailwind 기본 slate 색도 피함) */
+  --text: #111111; /* 본문 글자 */
+  --text-sub: #666666; /* 보조 글자 */
   --bg: #ffffff; /* 페이지 배경 */
-  --bg-soft: #f8fafc; /* 연한 회색 배경 (태그, 기술 박스) */
+  --bg-soft: #f6f6f5; /* 아주 연한 회색 (표 머리, 캡처 바탕) */
   --surface: #ffffff; /* 카드 배경 */
-  --border: #e2e8f0; /* 테두리 선 */
-  --accent: #4f46e5; /* 포인트색 (인디고) */
-  --accent-soft: #eef2ff; /* 포인트색의 아주 연한 버전 */
+  --border: #e4e4e2; /* 테두리 선 */
+  --accent: #111111; /* 포인트색도 검정: 강조는 색이 아니라 굵기로 */
+  --accent-soft: #f1f1ef; /* 연한 회색 */
 
   /* ===== 모양 변수 ===== */
-  --radius: 16px; /* 카드 모서리 둥글기 */
-  /* 그림자 2겹: 가까운 진한 그림자 + 멀리 퍼지는 옅은 그림자 = 자연스러움 */
-  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.06);
-  --shadow-hover:
-    0 2px 4px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.1);
+  /* 둥글기와 그림자를 줄여서 템플릿 느낌을 덜어냄 */
+  --radius: 6px; /* 카드 모서리 둥글기 */
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.07);
 
   font-family:
     "Pretendard",
@@ -57,56 +57,65 @@ a {
   margin: 0 auto;
   padding: 112px 24px 24px;
 }
-/* 섹션 제목 위의 작은 영문 라벨 (예: PROJECTS) */
-.eyebrow {
-  margin: 0 0 8px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em; /* 글자 사이를 넓게 */
-  text-transform: uppercase; /* 자동으로 대문자 */
-  color: var(--accent);
-}
 .section h2 {
-  font-size: 32px;
+  font-size: 28px;
+  font-weight: 700;
   letter-spacing: -0.02em; /* 큰 제목은 글자 사이를 살짝 좁히면 단단해 보임 */
   margin: 0 0 32px;
 }
 
 /* ===== 버튼 공통 ===== */
-/* 사용법: <a class="btn">기본</a>, <a class="btn primary">강조</a>, <a class="btn small">작게</a> */
+/* 사용법: <a class="btn">기본(테두리)</a>, <a class="btn primary">강조(검정)</a>, <a class="btn small">작게</a> */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 10px 18px;
-  border-radius: 10px;
+  border-radius: 3px; /* 거의 각진 모서리 */
   font-size: 15px;
-  font-weight: 600;
-  border: 1px solid var(--border);
+  font-weight: 500;
+  border: 1px solid #cfcfcc;
   color: var(--text);
-  background: var(--surface);
+  background: transparent;
   font-family: inherit; /* <button>에도 a와 같은 글꼴·줄 높이 */
   line-height: inherit;
   cursor: pointer;
-  /* 아래 세 값이 바뀔 때 0.15초 동안 부드럽게 */
   transition:
-    transform 0.15s,
-    box-shadow 0.15s,
+    border-color 0.15s,
     background 0.15s;
 }
 .btn:hover {
-  transform: translateY(-1px); /* 마우스 올리면 1px 위로 */
-  box-shadow: var(--shadow);
+  border-color: var(--text);
 }
 .btn.primary {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--text);
+  border-color: var(--text);
   color: #fff;
+}
+.btn.primary:hover {
+  background: #333;
 }
 .btn.small {
   padding: 6px 12px;
   font-size: 13px;
-  border-radius: 8px;
+}
+
+/* 글자형 링크 버튼: 밑줄 + 화살표 (프로젝트 목록의 데모·GitHub 등) */
+.text-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: #bdbdb9;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.text-link:hover {
+  text-decoration-color: var(--text);
 }
 
 /* 폰 화면 (폭 600px 이하) */

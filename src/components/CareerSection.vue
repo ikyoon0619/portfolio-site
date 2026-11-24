@@ -4,7 +4,6 @@ import { career } from "../data/career";
 
 <template>
   <section id="career" class="section">
-    <p class="eyebrow">Career</p>
     <h2>경력</h2>
     <ol class="timeline">
       <li v-for="c in career" :key="c.period" class="item">
@@ -57,16 +56,12 @@ h3 {
   font-size: 20px;
   letter-spacing: -0.01em;
 }
-/* 프로젝트명: 연보라 바탕 꼬리표 */
+/* 프로젝트명: 꼬리표 상자 없이 글자색만 */
 .project {
-  display: inline-block;
-  margin: 6px 0 12px;
-  padding: 2px 10px;
-  border-radius: 6px;
-  font-size: 14px;
+  margin: 4px 0 10px;
+  font-size: 15px;
   font-weight: 600;
-  background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--text);
 }
 .tasks {
   margin: 0;

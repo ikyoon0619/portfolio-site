@@ -13,8 +13,7 @@ const menus = [
   <header class="nav">
     <!-- inner: 메뉴 내용을 본문과 같은 폭으로 가운데 정렬 -->
     <div class="inner">
-      <!-- 이름 뒤 점(.)만 포인트색 -->
-      <a href="#about" class="logo">윤인규<span>.</span></a>
+      <a href="#about" class="logo">윤인규</a>
       <nav>
         <a v-for="m in menus" :key="m.id" :href="`#${m.id}`">{{ m.label }}</a>
       </nav>
@@ -49,9 +48,6 @@ const menus = [
   font-size: 18px;
   color: var(--text);
   letter-spacing: -0.02em;
-}
-.logo span {
-  color: var(--accent);
 }
 nav {
   display: flex;
