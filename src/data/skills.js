@@ -55,8 +55,8 @@ export const skillMatrix = [
 
 // 자격증·어학 (최신순)
 export const certifications = [
-  { name: "TOEIC 785점", date: "2018.11" },
+  { name: "TOEIC 790점", date: "2019.05" },
   { name: "네트워크관리사 2급", date: "2018.12" },
-  { name: "정보처리산업기사", date: "2018.06" },
-  { name: "컴퓨터활용능력 2급", date: "2018.06" },
+  { name: "정보처리산업기사", date: "2018.08" },
+  { name: "컴퓨터활용능력 2급", date: "2018.07" },
 ];
