@@ -49,6 +49,54 @@ export const projectDetails = {
     ],
   },
 
+  "purchase-approval": {
+    period: "2026.11",
+    role: "개인 프로젝트 · 요구사항·ERD부터 배포까지 1인, 11단계로 나눠 PR 하나씩",
+    problem:
+      "SI·사내 시스템에서 흔한 결재·재고 업무는 기능보다 동시성과 데이터 정합성이 어렵습니다. 같은 문서를 두 사람이 동시에 처리하거나, 같은 품목이 동시에 입고되거나, 배치를 다시 돌릴 때 데이터가 틀어지지 않아야 했습니다.",
+    image: {
+      src: "/projects/purchase-approval.jpg",
+      alt: "660만 원 구매요청서 상세 화면. 품목 표 아래 결재선에 팀장, 본부장, 구매팀장 세 단계가 모두 승인으로 표시되고 의견이 붙어 있음",
+    },
+    decisions: [
+      {
+        title: "N+1과 페이징을 쿼리 수로 확인",
+        body: "Hibernate 통계로 쿼리 수를 세는 테스트를 먼저 만들고 고쳤습니다. 사용자 목록은 fetch join으로 11번 → 1번, 컬렉션 fetch join + 페이징은 메모리 페이징 경고를 아예 오류로 바꾸고 batch fetch size로 쿼리 12번 → 3번이 됐습니다.",
+      },
+      {
+        title: "결재는 낙관적 락, 재고는 비관적 락",
+        body: "중간 단계 승인은 자식 행만 바뀌어 문서 version이 안 올라가는 바람에 회수와 승인이 둘 다 성공했습니다. 루트에 OPTIMISTIC_FORCE_INCREMENT를 걸어 하나만 성공하게 했습니다. 재고는 충돌이 잦아 SELECT … FOR UPDATE로 잠그고, 품목 id 순서로 잠가 데드락을 피했습니다.",
+      },
+      {
+        title: "외부 API는 트랜잭션 밖에서",
+        body: "국세청 사업자 상태 API를 트랜잭션 안에서 부르니 응답을 기다리는 동안 DB 커넥션을 잡고 있어 풀이 바닥났습니다. 읽기·쓰기 트랜잭션을 나누고 API는 그 사이에서 부르며, 연결 2초·응답 3초 타임아웃을 두었습니다.",
+      },
+      {
+        title: "다시 돌려도 같은 결과인 배치",
+        body: "같은 달 통계를 다시 집계하면 \"이미 완료\"로 거절되고, 파라미터를 바꾸면 UNIQUE 위반이 났습니다. 야간 배치는 runDate로 하루 한 번만, 수동 집계는 요청 시각으로 매번 새로 돌게 나누고, writer를 upsert로 바꿨습니다.",
+      },
+      {
+        title: "감사 로그는 커밋을 확인한 뒤",
+        body: "@Audited 한 줄로 누가·무엇을·성공 여부를 남깁니다. 실패 기록이 롤백으로 사라지지 않게 REQUIRES_NEW로 저장하고, aspect를 트랜잭션 바깥에 두어 커밋 충돌로 실패한 승인을 \"성공\"으로 적지 않게 했습니다.",
+      },
+      {
+        title: "운영은 Flyway + validate, CI에서 실제 MySQL로",
+        body: "운영에서는 JPA가 테이블을 바꾸지 않게 Flyway로 만들고 validate로 검사만 합니다. validate가 MySQL enum 값 목록은 비교하지 않는 함정을 재현해 enum 컬럼을 varchar로 바꿨고, CI에서 Docker 이미지 + MySQL 8로 띄워 로그인까지 확인합니다.",
+      },
+    ],
+    results: [
+      { value: "11 → 1번", label: "사용자 목록 쿼리 (N+1 해결)" },
+      { value: "10명 동시 +1 → 10", label: "동시 입고 후 재고 (유실 0)" },
+      { value: "9건", label: "직접 재현한 트러블슈팅 기록" },
+      { value: "118개", label: "테스트 (JUnit 5, H2 + CI MySQL)" },
+    ],
+    next: [
+      "HTTPS가 없어 http로만 접속됨 (도메인 + Nginx/Let's Encrypt 예정)",
+      "MySQL이 앱과 같은 EC2 안에 있어 서버를 바꾸면 백업·복원이 필요 (RDS로 분리 고려)",
+      "프론트는 Thymeleaf 서버 렌더링이라 화면 단위 테스트는 MockMvc 수준까지만",
+    ],
+  },
+
   "pharmacy-backend": {
     period: "2026.11",
     role: "개인 프로젝트 · 강의 실습을 Spring Boot 3로 다시 만들고 LLM 기능을 더함",
