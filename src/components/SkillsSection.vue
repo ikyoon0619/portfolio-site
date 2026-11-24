@@ -16,7 +16,7 @@ import { skillMatrix, certifications } from "../data/skills";
           <tr>
             <th scope="col" class="col-skill">기술</th>
             <th scope="col" class="col-kind">구분</th>
-            <th scope="col">어디서 썼나</th>
+            <th scope="col">활용 경험</th>
           </tr>
         </thead>
         <tbody>
