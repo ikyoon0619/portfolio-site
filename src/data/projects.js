@@ -63,6 +63,7 @@ export const projects = [
     ],
     github: "https://github.com/ikyoon0619/purchase-approval",
     demo: "http://54.180.77.43",
+    demoNote: "체험 계정: dev1(직원) · devlead(팀장) · admin(관리자), 비밀번호 모두 pass1234",
   },
   {
     id: "pharmacy-backend",
