@@ -1,14 +1,14 @@
 :root {
   /* ===== 색 변수: 여기만 바꾸면 사이트 전체 분위기가 바뀜 ===== */
-  /* 흑백 위주: 색 대신 굵기·크기·여백으로 위계를 줌 (Tailwind 기본 slate 색도 피함) */
-  --text: #111111; /* 본문 글자 */
-  --text-sub: #666666; /* 보조 글자 */
+  /* 기업형: 흰 바탕 + 코발트 블루 한 가지 */
+  --text: #16202c; /* 본문 글자 */
+  --text-sub: #5b6675; /* 보조 글자 */
   --bg: #ffffff; /* 페이지 배경 */
-  --bg-soft: #f6f6f5; /* 아주 연한 회색 (표 머리, 캡처 바탕) */
+  --bg-soft: #f3f5f8; /* 옅은 회색 (첫 화면 띠, 표 머리) */
   --surface: #ffffff; /* 카드 배경 */
-  --border: #e4e4e2; /* 테두리 선 */
-  --accent: #111111; /* 포인트색도 검정: 강조는 색이 아니라 굵기로 */
-  --accent-soft: #f1f1ef; /* 연한 회색 */
+  --border: #dfe4ea; /* 테두리 선 */
+  --accent: #0b4ea2; /* 포인트색 (코발트 블루) */
+  --accent-soft: #e8f0fa; /* 포인트색의 아주 연한 버전 */
 
   /* ===== 모양 변수 ===== */
   /* 둥글기와 그림자를 줄여서 템플릿 느낌을 덜어냄 */
@@ -57,6 +57,12 @@ a {
   margin: 0 auto;
   padding: 112px 24px 24px;
 }
+/* 섹션 제목: 왼쪽에 파란 막대 */
+.section > h2 {
+  padding-left: 14px;
+  border-left: 4px solid var(--accent);
+  line-height: 1.2;
+}
 .section h2 {
   font-size: 28px;
   font-weight: 700;
@@ -65,18 +71,18 @@ a {
 }
 
 /* ===== 버튼 공통 ===== */
-/* 사용법: <a class="btn">기본(테두리)</a>, <a class="btn primary">강조(검정)</a>, <a class="btn small">작게</a> */
+/* 사용법: <a class="btn">기본(테두리)</a>, <a class="btn primary">강조(파랑)</a>, <a class="btn small">작게</a> */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 10px 18px;
-  border-radius: 3px; /* 거의 각진 모서리 */
+  border-radius: 4px;
   font-size: 15px;
   font-weight: 500;
-  border: 1px solid #cfcfcc;
+  border: 1px solid #c6cdd6;
   color: var(--text);
-  background: transparent;
+  background: var(--surface);
   font-family: inherit; /* <button>에도 a와 같은 글꼴·줄 높이 */
   line-height: inherit;
   cursor: pointer;
@@ -88,19 +94,19 @@ a {
   border-color: var(--text);
 }
 .btn.primary {
-  background: var(--text);
-  border-color: var(--text);
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
 }
 .btn.primary:hover {
-  background: #333;
+  background: #083d80;
 }
 .btn.small {
   padding: 6px 12px;
   font-size: 13px;
 }
 
-/* 글자형 링크 버튼: 밑줄 + 화살표 (프로젝트 목록의 데모·GitHub 등) */
+/* 글자형 링크 버튼: 파란 밑줄 + 화살표 (프로젝트 목록의 데모·GitHub 등) */
 .text-link {
   padding: 0;
   border: 0;
@@ -108,14 +114,14 @@ a {
   font: inherit;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text);
+  color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: #bdbdb9;
+  text-decoration-color: #9db7da;
   text-underline-offset: 4px;
   cursor: pointer;
 }
 .text-link:hover {
-  text-decoration-color: var(--text);
+  text-decoration-color: var(--accent);
 }
 
 /* 폰 화면 (폭 600px 이하) */

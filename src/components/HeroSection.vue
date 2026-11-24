@@ -64,7 +64,7 @@ import { profile } from "../data/profile";
 
 <style scoped>
 .hero {
-  background: var(--bg); /* 그라데이션 없이 단색 배경 */
+  background: var(--bg-soft); /* 첫 화면만 옅은 회색 띠 */
   border-bottom: 1px solid var(--border);
 }
 .inner {
@@ -89,12 +89,9 @@ h1 {
   letter-spacing: -0.035em;
   margin: 0 0 20px;
 }
-/* 인사말·이름 줄은 회색, 직무명만 검정: 색 대신 명암으로 강조 */
-h1 {
-  color: #9a9a96;
-}
+/* 직무명만 포인트색 (그라데이션 없이 한 가지 색) */
 .em {
-  color: var(--text);
+  color: var(--accent);
 }
 .summary {
   max-width: 560px;
