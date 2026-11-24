@@ -5,7 +5,7 @@ import { profile } from "../data/profile";
 <template>
   <section id="contact" class="section">
     <h2>연락처</h2>
-    <p class="desc">백엔드와 LLM 서비스 개발 포지션을 찾고 있습니다.</p>
+    <p class="desc">Java/Spring 백엔드 개발자 신입 포지션을 찾고 있습니다.</p>
     <!-- 큰 색 박스 대신 메일과 GitHub만 담백하게 -->
     <dl class="list">
       <template v-if="profile.email">
