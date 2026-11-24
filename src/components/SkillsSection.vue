@@ -1,5 +1,5 @@
 <script setup>
-import { skillMatrix, certifications } from "../data/skills";
+import { skillMatrix } from "../data/skills";
 </script>
 
 <template>
@@ -34,14 +34,6 @@ import { skillMatrix, certifications } from "../data/skills";
       </table>
     </div>
 
-    <div class="certs">
-      <h3>자격증</h3>
-      <ul>
-        <li v-for="c in certifications" :key="c.name">
-          {{ c.name }} <span class="date">{{ c.date }}</span>
-        </li>
-      </ul>
-    </div>
   </section>
 </template>
 
@@ -99,29 +91,4 @@ tbody th {
   color: #2f3a47;
 }
 
-.certs {
-  margin-top: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px 20px;
-}
-.certs h3 {
-  margin: 0;
-  font-size: 15px;
-}
-.certs ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-  font-size: 15px;
-}
-.date {
-  color: var(--text-sub);
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
-}
 </style>
