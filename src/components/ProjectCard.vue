@@ -31,6 +31,9 @@ defineEmits(["open"]);
       <li v-for="h in project.highlights" :key="h">{{ h }}</li>
     </ul>
 
+    <!-- 데모에 로그인이 필요하면 체험 계정 안내 (projects.js의 demoNote, 없으면 안 보임) -->
+    <p v-if="project.demoNote" class="demo-note">{{ project.demoNote }}</p>
+
     <!-- 카드 맨 아래: 태그(왼쪽) + 버튼(오른쪽) -->
     <div class="foot">
       <div class="tags">
@@ -61,6 +64,14 @@ defineEmits(["open"]);
 </template>
 
 <style scoped>
+.demo-note {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  color: var(--text-sub);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
 .card {
   display: flex;
   flex-direction: column;

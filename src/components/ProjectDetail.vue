@@ -91,6 +91,7 @@ function onBackdropClick(e) {
         </ul>
       </section>
 
+      <p v-if="project.demoNote" class="demo-note">{{ project.demoNote }}</p>
       <footer class="links">
         <a :href="project.github" target="_blank" rel="noopener" class="btn"
           >GitHub</a
@@ -109,6 +110,11 @@ function onBackdropClick(e) {
 </template>
 
 <style scoped>
+.demo-note {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  color: var(--text-sub);
+}
 .dialog {
   width: min(
     760px,

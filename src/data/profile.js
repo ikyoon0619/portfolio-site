@@ -12,6 +12,6 @@ export const profile = {
     { value: "5년+", label: "기업 시스템 개발 경력" },
     { value: "0.957", label: "RAG 검색 MRR (하이브리드)" },
     { value: "74개", label: "Spring + Claude 서비스 테스트" },
-    { value: "3개", label: "배포·공개한 프로젝트" },
+    { value: "4개", label: "배포·공개한 프로젝트" },
   ],
 };
