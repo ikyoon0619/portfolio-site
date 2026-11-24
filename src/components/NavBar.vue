@@ -5,6 +5,7 @@ const menus = [
   { id: "skills", label: "기술·경험" },
   { id: "projects", label: "프로젝트" },
   { id: "career", label: "경력" },
+  { id: "certs", label: "자격증" },
   { id: "contact", label: "연락처" },
 ];
 </script>
@@ -72,9 +73,20 @@ nav a:hover {
   .inner {
     padding: 0 12px;
   }
+  /* 메뉴가 폭을 넘으면 줄바꿈 대신 옆으로 밀어서 보기 */
+  nav {
+    overflow-x: auto;
+    gap: 0;
+    scrollbar-width: none;
+  }
   nav a {
-    padding: 6px 8px;
+    padding: 6px 7px;
     font-size: 13px;
+    white-space: nowrap;
+  }
+  .logo {
+    flex: none;
+    margin-right: 8px;
   }
 }
 </style>

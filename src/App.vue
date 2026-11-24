@@ -4,6 +4,7 @@ import HeroSection from "./components/HeroSection.vue";
 import ProjectsSection from "./components/ProjectsSection.vue";
 import CareerSection from "./components/CareerSection.vue";
 import SkillsSection from "./components/SkillsSection.vue";
+import CertificationsSection from "./components/CertificationsSection.vue";
 import ContactSection from "./components/ContactSection.vue";
 </script>
 
@@ -14,6 +15,7 @@ import ContactSection from "./components/ContactSection.vue";
     <SkillsSection />
     <ProjectsSection />
     <CareerSection />
+    <CertificationsSection />
     <ContactSection />
   </main>
 </template>

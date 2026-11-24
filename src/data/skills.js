@@ -53,10 +53,30 @@ export const skillMatrix = [
   },
 ];
 
-// 자격증·어학 (최신순)
+// 자격증·어학 (직무 관련도 순). 자격증 섹션에서 표로 보여 줌
 export const certifications = [
-  { name: "TOEIC 790점", date: "2019.05" },
-  { name: "네트워크관리사 2급", date: "2018.12" },
-  { name: "정보처리산업기사", date: "2018.08" },
-  { name: "컴퓨터활용능력 2급", date: "2018.07" },
+  {
+    name: "정보처리산업기사",
+    type: "국가기술자격",
+    issuer: "한국산업인력공단",
+    date: "2018.08",
+  },
+  {
+    name: "네트워크관리사 2급",
+    type: "국가공인 민간자격",
+    issuer: "한국정보통신자격협회",
+    date: "2018.12",
+  },
+  {
+    name: "컴퓨터활용능력 2급",
+    type: "국가기술자격",
+    issuer: "대한상공회의소",
+    date: "2018.07",
+  },
+  {
+    name: "TOEIC 790점",
+    type: "어학",
+    issuer: "한국TOEIC위원회",
+    date: "2019.05",
+  },
 ];
