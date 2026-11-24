@@ -103,6 +103,7 @@ h3 {
 .result strong {
   margin-right: 6px;
   font-weight: 700;
+  color: var(--accent);
 }
 .demo-note {
   margin: 10px 0 0;
