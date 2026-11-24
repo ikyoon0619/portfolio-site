@@ -61,7 +61,7 @@ h3 {
   margin: 4px 0 10px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--text);
 }
 .tasks {
   margin: 0;

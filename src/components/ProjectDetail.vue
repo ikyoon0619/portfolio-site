@@ -126,11 +126,11 @@ function onBackdropClick(e) {
   border-radius: 20px;
   background: var(--surface);
   color: var(--text);
-  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
 }
 /* 모달 뒤 어두운 배경 */
 .dialog::backdrop {
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
 }
 .body {

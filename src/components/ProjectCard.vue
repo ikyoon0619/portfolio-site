@@ -39,27 +39,23 @@ defineEmits(["open"]);
       <p v-if="project.demoNote" class="demo-note">{{ project.demoNote }}</p>
       <p class="tags">{{ project.tags.join(" · ") }}</p>
       <div class="links">
-        <button
-          v-if="hasDetail"
-          class="btn small primary"
-          @click="$emit('open')"
-        >
-          자세히 보기
+        <button v-if="hasDetail" class="text-link" @click="$emit('open')">
+          자세히 보기 →
         </button>
         <a
           v-if="project.demo"
           :href="project.demo"
           target="_blank"
           rel="noopener"
-          class="btn small"
+          class="text-link"
           >데모 ↗</a
         >
         <a
           :href="project.github"
           target="_blank"
           rel="noopener"
-          class="btn small"
-          >GitHub</a
+          class="text-link"
+          >GitHub ↗</a
         >
       </div>
     </div>
@@ -79,7 +75,7 @@ defineEmits(["open"]);
 .shot {
   display: block;
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 2px;
   overflow: hidden;
   background: var(--bg-soft);
 }
@@ -105,8 +101,8 @@ h3 {
   font-size: 15px;
 }
 .result strong {
-  color: var(--accent);
-  margin-right: 4px;
+  margin-right: 6px;
+  font-weight: 700;
 }
 .demo-note {
   margin: 10px 0 0;
@@ -121,7 +117,7 @@ h3 {
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 8px 20px;
 }
 
 /* 폰·좁은 화면: 캡처를 위, 설명을 아래로 */

@@ -93,10 +93,10 @@ tbody th {
 }
 .kind.work {
   font-weight: 700;
-  color: var(--accent);
+  color: var(--text);
 }
 .where {
-  color: #334155;
+  color: #333;
 }
 
 .certs {

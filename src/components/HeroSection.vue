@@ -83,14 +83,18 @@ import { profile } from "../data/profile";
 
 
 h1 {
-  font-size: 46px;
+  font-size: 44px;
+  font-weight: 700;
   line-height: 1.25;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   margin: 0 0 20px;
 }
-/* 직무명: 그라데이션 글씨 대신 포인트색 한 가지 */
+/* 인사말·이름 줄은 회색, 직무명만 검정: 색 대신 명암으로 강조 */
+h1 {
+  color: #9a9a96;
+}
 .em {
-  color: var(--accent);
+  color: var(--text);
 }
 .summary {
   max-width: 560px;
@@ -124,7 +128,7 @@ h1 {
   height: 110px;
   object-fit: cover; /* 비율 유지하며 칸을 꽉 채우고 넘치는 부분은 자르기 */
   object-position: 50% 15%; /* 얼굴이 있는 위쪽 기준 */
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .name {
   margin: 0;
