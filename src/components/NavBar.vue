@@ -2,9 +2,9 @@
 // 메뉴 목록. id는 각 섹션의 id와 같아야 클릭 시 그 위치로 이동함
 // "소개"는 로고 클릭과 겹쳐서 뺌
 const menus = [
+  { id: "skills", label: "기술·경험" },
   { id: "projects", label: "프로젝트" },
   { id: "career", label: "경력" },
-  { id: "skills", label: "기술" },
   { id: "contact", label: "연락처" },
 ];
 </script>

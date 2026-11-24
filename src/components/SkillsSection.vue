@@ -1,79 +1,133 @@
 <script setup>
-import { skills, certifications } from "../data/skills";
+import { skillMatrix, certifications } from "../data/skills";
 </script>
 
 <template>
   <section id="skills" class="section">
     <p class="eyebrow">Skills</p>
-    <h2>기술</h2>
-    <div class="groups">
-      <!-- 기술 그룹 5개 -->
-      <div v-for="s in skills" :key="s.group" class="group">
-        <h3>{{ s.group }}</h3>
-        <div class="tags">
-          <span v-for="item in s.items" :key="item" class="tag">{{
-            item
-          }}</span>
-        </div>
-      </div>
-      <!-- 자격증도 같은 박스 모양으로 -->
-      <div class="group">
-        <h3>자격증</h3>
-        <ul class="certs">
-          <li v-for="c in certifications" :key="c.name">
-            <span>{{ c.name }}</span
-            ><span class="date">{{ c.date }}</span>
-          </li>
-        </ul>
-      </div>
+    <h2>기술과 경험</h2>
+    <p class="lead">
+      기술마다 실무에서 썼는지, 개인 프로젝트에서 썼는지 나눠 적었습니다.
+    </p>
+
+    <!-- 표가 화면보다 넓으면(폰) 이 상자 안에서만 가로로 스크롤 -->
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="col-skill">기술</th>
+            <th scope="col" class="col-kind">구분</th>
+            <th scope="col">어디서 썼나</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="m in skillMatrix" :key="m.skill">
+            <th scope="row">{{ m.skill }}</th>
+            <!-- 실무는 초록, 프로젝트는 보라 배지 -->
+            <td>
+              <span class="kind" :class="{ work: m.kind === '실무' }">{{
+                m.kind
+              }}</span>
+            </td>
+            <td class="where">{{ m.where }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="certs">
+      <h3>자격증</h3>
+      <ul>
+        <li v-for="c in certifications" :key="c.name">
+          {{ c.name }} <span class="date">{{ c.date }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <style scoped>
-/* 칸 최소 300px, 들어가는 만큼 자동으로 칸 수 결정 (넓은 화면 3칸, 폰 1칸) */
-.groups {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
+.section h2 {
+  margin-bottom: 8px;
 }
-.group {
-  padding: 22px;
-  background: var(--bg-soft);
+.lead {
+  margin: 0 0 24px;
+  color: var(--text-sub);
+}
+.table-box {
+  overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  background: var(--surface);
 }
-.group h3 {
-  margin: 0 0 12px;
+table {
+  width: 100%;
+  min-width: 640px; /* 이보다 좁아지면 상자 안에서 가로 스크롤 */
+  border-collapse: collapse; /* 칸 사이 테두리를 한 줄로 합치기 */
   font-size: 15px;
 }
-.tags {
+thead tr {
+  background: var(--bg-soft);
+  text-align: left;
+}
+th,
+td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+tbody tr {
+  border-top: 1px solid var(--border);
+}
+.col-skill {
+  width: 24%;
+}
+.col-kind {
+  width: 14%;
+}
+tbody th {
+  font-weight: 700;
+}
+.kind {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--accent-soft);
+  color: #3730a3;
+}
+.kind.work {
+  background: #dcfce7;
+  color: #14532d;
+}
+.where {
+  color: #334155;
+}
+
+.certs {
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  align-items: baseline;
+  gap: 8px 20px;
 }
-.tag {
-  font-size: 13px;
-  font-weight: 500;
-  padding: 5px 11px;
-  border-radius: 8px;
-  background: var(--surface); /* 회색 박스 위의 흰 태그 */
-  border: 1px solid var(--border);
+.certs h3 {
+  margin: 0;
+  font-size: 15px;
 }
-.certs {
+.certs ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: 6px;
-  font-size: 14px;
-}
-.certs li {
   display: flex;
-  justify-content: space-between; /* 이름은 왼쪽, 날짜는 오른쪽 끝 */
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 15px;
 }
 .date {
   color: var(--text-sub);
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
 </style>

@@ -11,9 +11,9 @@ import ContactSection from "./components/ContactSection.vue";
   <NavBar />
   <main>
     <HeroSection />
+    <SkillsSection />
     <ProjectsSection />
     <CareerSection />
-    <SkillsSection />
     <ContactSection />
   </main>
 </template>

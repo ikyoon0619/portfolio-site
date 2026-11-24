@@ -19,12 +19,10 @@ const selectedDetail = computed(() =>
     <p class="eyebrow">Projects</p>
     <h2>프로젝트</h2>
     <div class="grid">
-      <!-- 첫 번째(index 0) 프로젝트만 대표 카드 -->
       <ProjectCard
-        v-for="(p, index) in projects"
+        v-for="p in projects"
         :key="p.id"
         :project="p"
-        :featured="index === 0"
         :has-detail="Boolean(projectDetails[p.id])"
         @open="selected = p"
       />
@@ -40,10 +38,9 @@ const selectedDetail = computed(() =>
 </template>
 
 <style scoped>
-/* 폭이 넓으면 2열, 좁으면(폰) 1열로 자동 배치 */
+/* 프로젝트를 위에서 아래로 한 줄씩 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  gap: 16px;
 }
 </style>
